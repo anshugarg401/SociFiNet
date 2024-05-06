@@ -12,10 +12,79 @@ import Marquee from 'react-fast-marquee';
 import {  useNavigate } from "react-router-dom";
 import ConnectMetamask from '../component/ConnectWallet';
 
-
+const datapost = [
+  {
+    Username: "User Name",
+    Userheader: `User Headline   `,
+    usering:"https://media.istockphoto.com/id/1433039224/photo/blue-user-3d-icon-person-profile-concept-isolated-on-white-background-with-social-member.jpg?s=2048x2048&w=is&k=20&c=4kYlrBEQrLWS--wVUBYiNnMCX6psXAFLuTnARiJotiM=",
+    userpostimg:"https://media.istockphoto.com/id/1501243033/photo/chatbot-or-assistant-robot-chat-with-speech-bubble.jpg?s=2048x2048&w=is&k=20&c=Z-9vOZFkrbQRvemzBn4-AkKJCD5i0MubuRfrTSZjZ38=",
+    Domain: "Domain",
+    Content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
+                praesentium molestiae qui ullam at sequi, est expedita vel explicabo
+                magni quasi.`,
+  },
+  {
+    Username: "User Name",
+    Userheader: `User Headline   `,
+    usering:"https://media.istockphoto.com/id/1433039224/photo/blue-user-3d-icon-person-profile-concept-isolated-on-white-background-with-social-member.jpg?s=2048x2048&w=is&k=20&c=4kYlrBEQrLWS--wVUBYiNnMCX6psXAFLuTnARiJotiM=",
+    userpostimg:"https://media.istockphoto.com/id/1501243033/photo/chatbot-or-assistant-robot-chat-with-speech-bubble.jpg?s=2048x2048&w=is&k=20&c=Z-9vOZFkrbQRvemzBn4-AkKJCD5i0MubuRfrTSZjZ38=",
+    Domain: "Domain",
+    Content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
+                praesentium molestiae qui ullam at sequi, est expedita vel explicabo
+                magni quasi.`,
+  },
+  {
+    Username: "User Name",
+    Userheader: `User Headline   `,
+    usering:"https://media.istockphoto.com/id/1433039224/photo/blue-user-3d-icon-person-profile-concept-isolated-on-white-background-with-social-member.jpg?s=2048x2048&w=is&k=20&c=4kYlrBEQrLWS--wVUBYiNnMCX6psXAFLuTnARiJotiM=",
+    userpostimg:"https://media.istockphoto.com/id/1501243033/photo/chatbot-or-assistant-robot-chat-with-speech-bubble.jpg?s=2048x2048&w=is&k=20&c=Z-9vOZFkrbQRvemzBn4-AkKJCD5i0MubuRfrTSZjZ38=",
+    Domain: "Domain",
+    Content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
+                praesentium molestiae qui ullam at sequi, est expedita vel explicabo
+                magni quasi.`,
+  },
+  {
+    Username: "User Name",
+    Userheader: `User Headline   `,
+    usering:"https://media.istockphoto.com/id/1433039224/photo/blue-user-3d-icon-person-profile-concept-isolated-on-white-background-with-social-member.jpg?s=2048x2048&w=is&k=20&c=4kYlrBEQrLWS--wVUBYiNnMCX6psXAFLuTnARiJotiM=",
+    userpostimg:"https://media.istockphoto.com/id/1501243033/photo/chatbot-or-assistant-robot-chat-with-speech-bubble.jpg?s=2048x2048&w=is&k=20&c=Z-9vOZFkrbQRvemzBn4-AkKJCD5i0MubuRfrTSZjZ38=",
+    Domain: "Domain",
+    Content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
+                praesentium molestiae qui ullam at sequi, est expedita vel explicabo
+                magni quasi.`,
+  },
+  {
+    Username: "User Name",
+    Userheader: `User Headline   `,
+    usering:"https://media.istockphoto.com/id/1433039224/photo/blue-user-3d-icon-person-profile-concept-isolated-on-white-background-with-social-member.jpg?s=2048x2048&w=is&k=20&c=4kYlrBEQrLWS--wVUBYiNnMCX6psXAFLuTnARiJotiM=",
+    userpostimg:"https://media.istockphoto.com/id/1501243033/photo/chatbot-or-assistant-robot-chat-with-speech-bubble.jpg?s=2048x2048&w=is&k=20&c=Z-9vOZFkrbQRvemzBn4-AkKJCD5i0MubuRfrTSZjZ38=",
+    Domain: "Domain",
+    Content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
+                praesentium molestiae qui ullam at sequi, est expedita vel explicabo
+                magni quasi.`,
+  },
+  {
+    Username: "User Name",
+    Userheader: `User Headline   `,
+    usering:"https://media.istockphoto.com/id/1433039224/photo/blue-user-3d-icon-person-profile-concept-isolated-on-white-background-with-social-member.jpg?s=2048x2048&w=is&k=20&c=4kYlrBEQrLWS--wVUBYiNnMCX6psXAFLuTnARiJotiM=",
+    userpostimg:"https://media.istockphoto.com/id/1501243033/photo/chatbot-or-assistant-robot-chat-with-speech-bubble.jpg?s=2048x2048&w=is&k=20&c=Z-9vOZFkrbQRvemzBn4-AkKJCD5i0MubuRfrTSZjZ38=",
+    Domain: "Domain",
+    Content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
+                praesentium molestiae qui ullam at sequi, est expedita vel explicabo
+                magni quasi.`,
+  },
+];
 const { Meta } = Card;
 
+// const backgroundColor = getComputedStyle(body).backgroundColor;
+
+
 const Home = () => {
+  const body = document.body;
+
+
+
+
   const [pageNumber, setPageNumber] = useState(0);
   const [commentModalVisible, setCommentModalVisible] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
@@ -60,7 +129,7 @@ const Home = () => {
 
     // Fetch data
     fetchData();
-  }, [dispatch, pageNumber, BASE_URL]);
+  }, [dispatch, pageNumber, BASE_URL,NightAndDay]);
   const showCommentModal = (post) => {
     setSelectedPost(post);
     setCommentModalVisible(true);
@@ -113,6 +182,7 @@ const Home = () => {
   const [paginationList, setPaginationList] = useState([]);
 
   return (
+  
 
 
 
@@ -146,64 +216,85 @@ const Home = () => {
       </Marquee>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {posts?.map((post) => (
-          <Card
-            key={post._id}
-            hoverable
-            style={{ width: "100%", margin: "auto" }}
-            className="mb-4 flex h-42 flex-col md:flex-row"
-          >
-            {post?.pictures.length > 0 ? (
-              <div className="md:w-80 md:border-r-2">
-                <img
-                  className="object-cover h-48 w-full rounded-md"
-                  key={post.pictures[0].public_id}
-                  src={post.pictures[0].image}
-                  alt="Post Image"
-                />
-              </div>
-            ) : (
-              <div className="md:w-80 md:border-r-2">
-                <img
-                  className="object-cover h-48 w-full rounded-md"
-                  src="/no-image.jpeg"
-                  alt="Placeholder Image"
-                />
-              </div>
-            )}
+    
+          {datapost.length === 0 ? (
+        <div>
+          <img
+            src={emptysaved}
+            alt=""
+            className="object-contain h-60 xl:h-96 w-full  sm:px-10 md:px-20"
+          />
+          <div style={{ WebkitTextFillColor: "#4F51C0" }}>
+            <p className="font-semibold text-xl xl:text-3xl text-center sm:mt-6 md:mt-8 xl:mt-12">
+              No Saved Posts Yet
+            </p>
+          </div>
+        </div>
+        
+      ) : (
+        
+          
+            datapost.map((item) => (
+              <Card
+              key={item.Username}
+              hoverable
+  
+              style={{ width: "100%", margin: "auto" ,
+              
+              
+              background:
+                "linear-gradient(to right, rgba(255, 255, 255, 0.2) 10%, rgba(255, 255, 255, 0.15) 60%, rgba(255, 255, 255, 0.1) 90%)",}}
+              className="mb-4 flex h-42 flex-col md:flex-row"
+            >
+              <p key={item.Username}>
 
-            <div className="md:flex-1 md:ml-4">
-              <Meta
-                title={
-                  <h4
-                    style={{ wordWrap: "break-word" }}
-                    className="content font-bold text-2xl h-4"
+                  <div className=" pt-4">
+                    <img
+                      alt="Home"
+                      src={item.userpostimg}
+                      className=" h-56 md:h-60 w-full object-fit"
+                    />
+                  </div>
+
+                  <div className="mt-2">
+                    <div className="mt-4 flex  items-center gap-2  text-xs ">
+                      <div className="inline-flex shrink-0 items-center gap-3 ">
+                        <a href="" className="flex-none">
+                          <img
+                            src={item.usering}
+                            className="h-14 w-14  rounded-full"
+                            alt=""
+                          />
+                        </a>
+
+                        <div className="mt-1.5 sm:mt-0 text-white flex-shrink">
+                          <p className=" text-lg font-semibold leading-normal ">
+                          {item.Username}
+                          </p>
+
+                          <p className="font-normal text-base leading-none">
+                          {item.Userheader}
+                          </p>
+                        </div>
+                        <div className=" flex flex-row-reverse p-1 pr-5 font-light text-base text-white self-start flex-none w-[130px] lg:w-[190px]">
+                          <p>{item.Domain}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <dl
+                    className="mt-3 flex items-center 
+      overflow-hidden "
                   >
-                    {post.title.substring(0, 20) +
-                      (post.content.length > 20 ? "..." : "")}
-                  </h4>
-                }
-                description={
-                  <p className="break-words content-home h-20">
-                    {post.content.substring(0, 100) +
-                      (post.content.length > 100 ? "..." : "")}
-                  </p>
-                }
-              />
+                    <div className="  text-base text-white font-light px-2 ">
+                    {item.Content}
+                    </div>
+                  </dl>
+              </p>
+              </Card>
+           ) ))}
+               
 
-              <div className="mt-4 flex justify-between items-center">
-                <Link to={`/post/${post._id}`}>Read more</Link>
-                <div>
-                  <Button onClick={() => showCommentModal(post)}>
-                    Comment
-                  </Button>
-                  <Button onClick={() => handleLike(post._id)}>Like</Button>
-                  <span>{likeCount}</span>
-                </div>
-              </div>
-            </div>
-          </Card>
-        ))}
       </div>
 
       <Modal
@@ -233,7 +324,8 @@ const Home = () => {
 
       </div>
     </div>
-  );
+    )
+
 };
 
 export default Home;
