@@ -97,7 +97,7 @@ export default function WalletDrop({
           <Menu.Items className="absolute right-0 z-10 mt-2 w-96 h-auto origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="py-1">
               <Menu.Item>
-                {({ active }) => (
+                
                   <div className="block px-4 py-2 text-sm">
                     <div className="flex flex-row">
                       <img
@@ -118,7 +118,7 @@ export default function WalletDrop({
                         >
                           <img
                             onClick={updateTriggerBoundingRect}
-                            className="text-sm mr-3 font-medium text-gray-500"
+                            className="text-sm mr-3 font-medium text-gray-800"
                             height={20}
                             width={20}
                             src={reload}
@@ -136,10 +136,10 @@ export default function WalletDrop({
                       </div>
                     </div>
                   </div>
-                )}
+              
               </Menu.Item>
               <Menu.Item>
-                {({ active }) => (
+               
                   <div className="group relative flex gap-y-5 rounded-lg  ">
                     <div className="mt-1 flex h-2 w-5 flex-none rounded-lg bg-gray-50 "></div>
 
@@ -151,10 +151,10 @@ export default function WalletDrop({
                       </p>
                     </div>
                   </div>
-                )}
+           
               </Menu.Item>
               <Menu.Item>
-                {({ active }) => (
+          
                   <p className="block px-4 py-2 text-sm">
                     <div className="flex flex-row items-center justify-center">
                       {!isSignedIn ? (
@@ -174,8 +174,8 @@ export default function WalletDrop({
                       )}
                     </div>
                   </p>
-                )}
-              </Menu.Item>
+           
+                 </Menu.Item>
               {/* <Menu.Item>
            
               <div className='flex'>
