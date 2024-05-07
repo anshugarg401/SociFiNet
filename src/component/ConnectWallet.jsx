@@ -132,19 +132,10 @@ const ConnectMetamask = () => {
   
          </>
       ) : (
-        <>
-        <WalletDrop />
-        <div>
-        <p>{truncatedAccount}</p>
-        <p>{balance}</p>
-        {!isSignedIn ? (
-          <button onClick={signIn}>Sign In</button>
-        ) : (
-          <button onClick={signOut}>Sign Out</button>
-        )}
-        <button onClick={disconnectWallet}>Disconnect</button>
-      </div>
-      </>
+        
+        <WalletDrop disconnect = {disconnectWallet} signIn = {signIn} signOut = {signOut} isSignedIn = {isSignedIn} truncatedAccount = {truncatedAccount} balance = {balance} />
+   
+  
     )}
   </div>
  
