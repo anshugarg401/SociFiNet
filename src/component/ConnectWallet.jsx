@@ -123,7 +123,7 @@ const ConnectMetamask = () => {
       {!isConnected ? (
         <>
       
-        <button onClick={connectWallet} type="button" className="inline-flex  justify-center gap-x-1.5 rounded-md text-gray-900 bg-white hover:bg-gray-100 border focus:ring-gray-100 font-medium  text-sm px-3 py-2 text-center items-center me-2 mb-2">
+        <button onClick={connectWallet} type="button" className="inline-flex   justify-center gap-x-1.5 rounded-md text-gray-900 bg-white hover:bg-gray-100 border focus:ring-gray-100 font-medium  text-sm px-3 py-2 text-center items-center me-2 mb-2">
         <img className="mr-3" height={25} width={25} src={MetaMask} alt="My SVG" />
         Connect MetaMask
 

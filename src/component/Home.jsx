@@ -133,7 +133,7 @@ const Home = () => {
   <NightAndDay />
 </div>
 
-      <div className="absolute top-0 right-0 mr-4 mt-4"> 
+      <div className="absolute top-1 right-10 mr-4 mt-4"> 
         <ConnectMetamask />
       </div>
       

@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
-
+import { PoweroffOutlined } from '@ant-design/icons';
+import { Button } from 'antd';
 import {
   ChevronDownIcon,
   PhoneIcon,
@@ -19,38 +20,16 @@ import {
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-const solutions = [
-  {
-    name: "Analytics",
-    description: "Get a better under",
-    href: "#",
-    icon: ChartPieIcon,
-  },
-  {
-    name: "Engagement",
-    description: "Speak directly to you",
-    href: "#",
-    icon: CursorArrowRaysIcon,
-  },
-  {
-    name: "Security",
-    description: "Your customers' data wil",
-    href: "#",
-    icon: FingerPrintIcon,
-  },
-  {
-    name: "Integrations",
-    description: "Connect with third",
-    href: "#",
-    icon: SquaresPlusIcon,
-  },
-  {
-    name: "Automations",
-    description: "Build strategic funnels ",
-    href: "#",
-    icon: ArrowPathIcon,
-  },
-];
+// const solutions = [
+//   {
+//     name: "Analytics",
+//     description: "Get a better under",
+//     href: "#",
+//     icon: ChartPieIcon,
+//   },
+
+
+// ];
 
 export default function WalletDrop({
   disconnect,
@@ -60,19 +39,13 @@ export default function WalletDrop({
   truncatedAccount,
   balance,
 }) {
-  const ReloadRef = useRef(null);
-  const [rect, setRect] = useState(null);
-  const updateTriggerBoundingRect = useCallback(() => {
-    if (ReloadRef.current) {
-      const newRect = ReloadRef.current.getBoundingClientRect();
-      setRect(newRect);
-    }
-  }, [rect]);
+  
+
 
   return (
     <>
       <Menu as="div" className="relative inline-block text-left">
-        <div ref={ReloadRef}>
+        <div>
           <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md text-gray-900 bg-white hover:bg-gray-100 border focus:ring-gray-100 font-medium  text-sm px-3 py-2 text-center items-center me-2 mb-2">
             <img
               className="mr-3"
@@ -86,7 +59,7 @@ export default function WalletDrop({
         </div>
 
         <Transition
-          as={Fragment}
+ 
           enter="transition ease-out duration-100"
           enterFrom="transform opacity-0 scale-95"
           enterTo="transform opacity-100 scale-100"
@@ -94,80 +67,99 @@ export default function WalletDrop({
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute right-0 z-10 mt-2 w-96 h-auto origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-            <div className="py-1">
-              <Menu.Item>
+          <Menu.Items ref={menuRef} className="absolute right-0 z-10 mt-2 w-96 h-auto origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+          {isOpen && (  <div className="py-1">
+              
                 
-                  <div className="block px-4 py-2 text-sm">
+                  <div className="block px-4 py-2 text-sm ">
                     <div className="flex flex-row">
                       <img
                         className="inline-block p h-6 w-6 pt-3 pl-1 rounded-full ring-2 ring-white"
                         src={MetaMask}
                         alt=""
                       />
+                      
 
                       <div className="ml-3 ">
                         <p className="text-sm font-medium text-gray-900">
                           {truncatedAccount}
                         </p>
                       </div>
-                      <div className="flex mt-3">
-                        <div
+                      <div className="flex ml-16 ">
+                        {/* <div
                           className="ml-16 
                       "
                         >
                           <img
                             onClick={updateTriggerBoundingRect}
-                            className="text-sm mr-3 font-medium text-gray-800"
+                            className="text-sm mr-3 mt-2 bg-blu font-medium text-gray-800"
                             height={20}
                             width={20}
                             src={reload}
                             alt="My SVG"
                           />
-                        </div>
-                        <div className="ml-3">
+                        </div> */}
+                        <div className="ml-6 mt-2 ">
                           <button
                             onClick={disconnect}
-                            className="text-sm font-medium text-gray-900"
+                            className="text-sm font-medium text-gray-100 middle none center mr-2 rounded-lg bg-blue-400 py-1 hover:bg-blue-500 px-3 font-sans uppercase hover:shadow-sm hover:shadow-blue-500/40 focus:opacity-[0.85] "
+                            data-ripple-light="true"
                           >
                             disconnect
                           </button>
+                      
                         </div>
                       </div>
                     </div>
                   </div>
-              
-              </Menu.Item>
-              <Menu.Item>
+                  
+           
+              <hr class="my-1 mb-5 border-t-0 bg-neutral-200 dark:bg-white/10" />
+        
                
-                  <div className="group relative flex gap-y-5 rounded-lg  ">
+                  <div className="group relative flex rounded-lg  ">
                     <div className="mt-1 flex h-2 w-5 flex-none rounded-lg bg-gray-50 "></div>
 
                     <div>
-                      <p className="mt-1 text-gray-600">Total Balance</p>
-                      <p className="font-semibold text-gray-900">
+                      <p className="mt-1 leading-3 text-gray-600">Total Balance</p>
+                      <p className=" -mt-1 font-extrabold  text-2xl text-gray-900">
                         {balance}
-                        <span className="absolute inset-0" />
+                        
                       </p>
                     </div>
                   </div>
            
-              </Menu.Item>
-              <Menu.Item>
+              
+              <hr class="mt-3  border-t-0 bg-neutral-200 dark:bg-white/10" />
+              
           
-                  <p className="block px-4 py-2 text-sm">
-                    <div className="flex flex-row items-center justify-center">
+                  <p className="block px-4  text-sm">
+                  
+                    <div className="flex flex-row-reverse items-center ">
+                      
+                    <Button
+                    bordered
+                    style={{ borderColor: 'black', borderWidth:"2px" }}
+          type="primary"
+          icon={<PoweroffOutlined />}
+          className="rounded-lg bg-blue-400 py-1 hover:bg-blue-500 px-3 hover:shadow-sm hover:shadow-blue-500/40 focus:opacity-[0.85] "
+          data-ripple-light="true "
+         
+          // onClick={}
+        />
                       {!isSignedIn ? (
                         <button
                           onClick={signIn}
-                          className="text-sm font-medium text-gray-900"
+                          className="text-sm font-medium text-gray-100 middle none center mr-2 rounded-lg bg-blue-400 py-1 hover:bg-blue-500 px-3 font-sans uppercase hover:shadow-sm hover:shadow-blue-500/40 focus:opacity-[0.85] "
+                          data-ripple-light="true"
                         >
-                          Signin
+                          Sign in
                         </button>
                       ) : (
                         <button
                           onClick={signOut}
-                          className="text-sm font-medium text-gray-900"
+                          className="text-sm font-medium text-gray-100 middle none center mr-2 rounded-lg bg-blue-400 py-1 hover:bg-blue-500 px-3 font-sans uppercase hover:shadow-sm hover:shadow-blue-500/40 focus:opacity-[0.85] "
+                          data-ripple-light="true"
                         >
                           SignOut
                         </button>
@@ -175,7 +167,7 @@ export default function WalletDrop({
                     </div>
                   </p>
            
-                 </Menu.Item>
+                
               {/* <Menu.Item>
            
               <div className='flex'>
@@ -210,6 +202,7 @@ export default function WalletDrop({
             
             </Menu.Item>   */}
             </div>
+            )}
           </Menu.Items>
         </Transition>
       </Menu>
