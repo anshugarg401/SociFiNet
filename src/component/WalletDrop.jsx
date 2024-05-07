@@ -39,13 +39,12 @@ export default function WalletDrop({
   truncatedAccount,
   balance,
 }) {
-  
 
 
   return (
     <>
       <Menu as="div" className="relative inline-block text-left">
-        <div>
+        <div >
           <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md text-gray-900 bg-white hover:bg-gray-100 border focus:ring-gray-100 font-medium  text-sm px-3 py-2 text-center items-center me-2 mb-2">
             <img
               className="mr-3"
@@ -67,8 +66,8 @@ export default function WalletDrop({
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items ref={menuRef} className="absolute right-0 z-10 mt-2 w-96 h-auto origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-          {isOpen && (  <div className="py-1">
+          <Menu.Items  className="absolute right-0 z-10 mt-2 w-96 h-auto origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+            <div className="py-1">
               
                 
                   <div className="block px-4 py-2 text-sm ">
@@ -138,7 +137,7 @@ export default function WalletDrop({
                     <div className="flex flex-row-reverse items-center ">
                       
                     <Button
-                    bordered
+                    bordered 
                     style={{ borderColor: 'black', borderWidth:"2px" }}
           type="primary"
           icon={<PoweroffOutlined />}
@@ -202,7 +201,6 @@ export default function WalletDrop({
             
             </Menu.Item>   */}
             </div>
-            )}
           </Menu.Items>
         </Transition>
       </Menu>
