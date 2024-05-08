@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 // import classNames from 'classnames';
 import NightAndDay from '../component/nightday/NightDayToggle'
+import commenticon from '../../public/comment.png'
+import likeicon from '../../public/like.png'
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Modal, Button, Input, Card, message, Spin } from 'antd';
@@ -241,7 +243,7 @@ const [Darkmode, setDarkMode] = useState(false);
             className="object-contain h-60 xl:h-96 w-full  sm:px-10 md:px-20"
           />
           <div style={{ WebkitTextFillColor: "#4F51C0" }}>
-            <p className="font-semibold text-xl xl:text-3xl text-center sm:mt-6 md:mt-8 xl:mt-12">
+            <p className="font-semibold text-xl xl:text-3xl text-center sm:mt-6 md:mt-8 xl:mt-12 ">
               No Saved Posts Yet
             </p>
           </div>
@@ -305,11 +307,11 @@ const [Darkmode, setDarkMode] = useState(false);
                           {item.Username}
                           </p>
 
-                          <p className="font-normal text-base leading-none">
+                          <p className="font-normal text-base leading-none -mt-4">
                           {item.Userheader}
                           </p>
                         </div>
-                        <div className=" flex flex-row-reverse p-1 pr-5 font-light text-base  self-start flex-none w-[130px] lg:w-[190px]">
+                        <div className=" flex flex-row-reverse p-1 pr-5 font-light text-lg  self-start flex-none w-[130px] lg:w-[190px]">
                           <p>{item.Domain}</p>
                         </div>
                       </div>
@@ -319,10 +321,33 @@ const [Darkmode, setDarkMode] = useState(false);
                     className="mt-3 flex items-center 
       overflow-hidden  "
                   >
-                    <div className="   text-base font-light px-2 ">
+                    <div className="   text-base font-light px-2 text-left ">
                     {item.Content}
                     </div>
                   </dl>
+                  <div className="mt-4 flex justify-between items-center">
+                <Link to={`#`}>Read more</Link>
+                <div className='grid grid-flow-col gap-x-2 justify-center'>
+                
+                  <Button onClick={() => showCommentModal(post)}>
+                    <div className='flex '>
+                    <img height={20} src={commenticon} alt="" className='pr-2 ' />
+                    <span >  Comment</span>
+                    </div>
+                  
+                  
+                  
+                  </Button>
+                  <Button onClick={() => handleLike(post._id)}> 
+                  <div className='flex '>
+                    <img height={20} src={likeicon} alt="" className='pr-2 ' />
+                    <span >  Like</span>
+                    <span className='ml-2'>{likeCount}</span>
+                    </div>
+                  </Button>
+                  
+                </div>
+              </div>
               </p>
               </Card>
            ) ))}
