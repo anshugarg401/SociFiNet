@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Switch } from 'antd';
-import light from '../../../public/day-mode.png';
-import dark from '../../../public/dark-mode.png';
+import light from '/day-mode.png';
+import dark from '/dark-mode.png';
 const NightAndDay = () => {
   // State to keep track of the current theme
   const [isDarkMode, setIsDarkMode] = useState(false);

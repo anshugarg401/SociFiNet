@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 // import classNames from 'classnames';
 import NightAndDay from '../component/nightday/NightDayToggle'
-import commenticon from '../../public/comment.png'
-import likeicon from '../../public/like.png'
+import commenticon from '/comment.png'
+import likeicon from '/like.png'
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Modal, Button, Input, Card, message, Spin } from 'antd';
