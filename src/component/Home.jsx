@@ -1,8 +1,10 @@
 // components/Home.jsx
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+// import classNames from 'classnames';
 import NightAndDay from '../component/nightday/NightDayToggle'
+import commenticon from '/comment.png'
+import likeicon from '/like.png'
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Modal, Button, Input, Card, message, Spin } from 'antd';
@@ -10,17 +12,40 @@ import { setPosts } from '../store/postSlice';
 import { selectUser } from '../store/userSlice';
 import Marquee from 'react-fast-marquee';
 import {  useNavigate } from "react-router-dom";
+
 import ConnectMetamask from '../component/ConnectWallet';
-
-
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
+const datapost = [
+  {
+    Username: "User Name",
+    Userheader: `User Headline   `,
+    usering:"https://media.istockphoto.com/id/1433039224/photo/blue-user-3d-icon-person-profile-concept-isolated-on-white-background-with-social-member.jpg?s=2048x2048&w=is&k=20&c=4kYlrBEQrLWS--wVUBYiNnMCX6psXAFLuTnARiJotiM=",
+    userpostimg:"https://media.istockphoto.com/id/1501243033/photo/chatbot-or-assistant-robot-chat-with-speech-bubble.jpg?s=2048x2048&w=is&k=20&c=Z-9vOZFkrbQRvemzBn4-AkKJCD5i0MubuRfrTSZjZ38=",
+    Domain: "Domain",
+    Content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
+                praesentium molestiae qui ullam at sequi, est expedita vel explicabo
+                magni quasi.`,
+  },
+  
+];
 const { Meta } = Card;
 
+// const backgroundColor = getComputedStyle(body).backgroundColor;
+
+
 const Home = () => {
+  const body = document.body;
+
+
+
+
   const [pageNumber, setPageNumber] = useState(0);
   const [commentModalVisible, setCommentModalVisible] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
   const [showNext, setShowNext] = useState(true);
-
+const [Darkmode, setDarkMode] = useState(false);
   const [comment, setComment] = useState('');
   const [selectedPost, setSelectedPost] = useState(null);
   const [showPrevious, setShowPrevious] = useState(false);
@@ -60,7 +85,7 @@ const Home = () => {
 
     // Fetch data
     fetchData();
-  }, [dispatch, pageNumber, BASE_URL]);
+  }, [dispatch, pageNumber, BASE_URL,NightAndDay]);
   const showCommentModal = (post) => {
     setSelectedPost(post);
     setCommentModalVisible(true);
@@ -73,6 +98,7 @@ const Home = () => {
         // You can replace '/login' with the actual login page route
         return navigate('/login');
       }
+
 
       const response = await axios.post(`${BASE_URL}/api/v1/posts/like/${postId}`);
       setLikeCount(response.data.likes);
@@ -110,16 +136,30 @@ const Home = () => {
     }
   };
 
+  const handleDarkMode = ()=>{
+    if ( !Darkmode) {
+      setDarkMode(true);
+    
+    } else {
+      setDarkMode(false);
+ 
+      
+    }
+
+    console.log(Darkmode);
+  };
+
   const [paginationList, setPaginationList] = useState([]);
 
   return (
+  
 
 
 
     
     <div className="container mx-auto">
-   <div className="flex justify-start">
-  <NightAndDay />
+   <div className="flex justify-start"  onClick = {handleDarkMode}>
+  <NightAndDay/>
 </div>
 
       <div className="absolute top-0 right-0 mr-4 mt-4"> 
@@ -146,14 +186,51 @@ const Home = () => {
       </Marquee>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {posts?.map((post) => (
-          <Card
-            key={post._id}
-            hoverable
-            style={{ width: "100%", margin: "auto" }}
-            className="mb-4 flex h-42 flex-col md:flex-row"
-          >
-            {post?.pictures.length > 0 ? (
+    
+          {datapost.length === 0 ? (
+        <div>
+          <img
+            src={emptysaved}
+            alt=""
+            className="object-contain h-60 xl:h-96 w-full  sm:px-10 md:px-20"
+          />
+          <div style={{ WebkitTextFillColor: "#4F51C0" }}>
+            <p className="font-semibold text-xl xl:text-3xl text-center sm:mt-6 md:mt-8 xl:mt-12 ">
+              No Saved Posts Yet
+            </p>
+          </div>
+        </div>
+        
+      ) : (
+        
+        posts?.map((post) => (
+            
+              <Card
+       
+              key={post._id}
+              hoverable
+  
+              style={{ width: "100%", margin: "auto" ,
+            
+              
+              background:
+                "linear-gradient(to right, rgba(255, 255, 255, 0.2) 10%, rgba(255, 255, 255, 0.15) 60%, rgba(255, 255, 255, 0.1) 90%)",}}
+                
+                 
+                className={Darkmode ? 'mb-4 flex h-42 flex-col md:flex-row text-white' : 'mb-4 flex h-42 flex-col md:flex-row'}
+
+                
+              
+                  
+            
+            >
+      
+              <p key={post.author}>
+
+              <div className={classNames("pt-4 text-inherit", {"text-black" : !Darkmode }, {"text-white" : Darkmode })}>
+        </div>        
+
+{post?.pictures.length > 0 ? (
               <div className="md:w-80 md:border-r-2">
                 <img
                   className="object-cover h-48 w-full rounded-md"
@@ -165,14 +242,46 @@ const Home = () => {
             ) : (
               <div className="md:w-80 md:border-r-2">
                 <img
-                  className="object-cover h-48 w-full rounded-md"
-                  src="/no-image.jpeg"
+                         className="object-cover h-48 w-full rounded-md"
+                   src="/no-image.jpeg"
                   alt="Placeholder Image"
                 />
               </div>
             )}
+                   
 
-            <div className="md:flex-1 md:ml-4">
+                  <div className="mt-2">
+                    <div className="mt-4 flex  items-center gap-2  text-xs ">
+                      <div className="inline-flex shrink-0 items-center gap-3 ">
+                        <a href="" className="flex-none object-cover ">
+                          <img
+                            src={datapost.usering}
+                            className="h-14 w-14  rounded-full"
+                            alt=""
+                          />
+                        </a>
+
+                        <div className="mt-1.5 sm:mt-0  flex-shrink">
+                          <p className=" text-lg font-semibold leading-normal ">
+                          {post.author}
+                          </p>
+
+                          <p className="font-normal text-base leading-none -mt-4">
+                          {datapost.Userheader}
+                          </p>
+                        </div>
+                        <div className=" flex flex-row-reverse p-1 pr-5 font-light text-lg  self-start flex-none w-[130px] lg:w-[190px]">
+                          <p>{datapost.Domain}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <dl
+                    className="mt-3 flex items-center 
+      overflow-hidden  "
+                  >
+                    {/* <div className="   text-base font-light px-2 text-left "> */}
+                    <div className="md:flex-1 md:ml-4">
               <Meta
                 title={
                   <h4
@@ -184,26 +293,42 @@ const Home = () => {
                   </h4>
                 }
                 description={
-                  <p className="break-words content-home h-20">
+                  <p  className={`break-words content-home h-20 ${Darkmode ? 'text-white' : 'text-black'}`}>
                     {post.content.substring(0, 100) +
                       (post.content.length > 100 ? "..." : "")}
                   </p>
                 }
               />
-
-              <div className="mt-4 flex justify-between items-center">
-                <Link to={`/post/${post._id}`}>Read more</Link>
-                <div>
+                    </div>
+                  </dl>
+                  <div className="mt-4 flex justify-between items-center">
+                  <Link to={`/post/${post._id}`}>Read more</Link>
+                <div className='grid grid-flow-col gap-x-2 justify-center'>
+                
                   <Button onClick={() => showCommentModal(post)}>
-                    Comment
+                    <div className='flex '>
+                    <img height={20} src={commenticon} alt="" className='pr-2 ' />
+                    <span >  Comment</span>
+                    </div>
+                  
+                  
+                  
                   </Button>
-                  <Button onClick={() => handleLike(post._id)}>Like</Button>
-                  <span>{likeCount}</span>
+                  <Button onClick={() => handleLike(post._id)}> 
+                  <div className='flex '>
+                    <img height={20} src={likeicon} alt="" className='pr-2 ' />
+                    <span >  Like</span>
+                    <span className='ml-2'>{likeCount}</span>
+                    </div>
+                  </Button>
+                  
                 </div>
               </div>
-            </div>
-          </Card>
-        ))}
+              </p>
+              </Card>
+           ) ))}
+               
+
       </div>
 
       <Modal
@@ -233,7 +358,8 @@ const Home = () => {
 
       </div>
     </div>
-  );
+    )
+
 };
 
 export default Home;

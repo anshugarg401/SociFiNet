@@ -5,7 +5,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { message } from "antd";
 import { useDispatch } from "react-redux";
-import { updateUser } from "../store/userSlice";
+import { signInUser } from "../store/userSlice";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -51,7 +51,7 @@ const Login = () => {
       // console.log(loginResponse);
 
       // Dispatch the email to the Redux store
-      dispatch(updateUser(loginResponse.data ));
+      dispatch(signInUser(loginResponse.data ));
       // Navigate to the homepage after successful login
       navigate("/");
     } catch (error) {
