@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Form, Input, Select, Button, Upload, message } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
+import UseMetamask from '../hooks/UseMetamask'; // Import the custom hook
 
 const { Option } = Select;
 
@@ -14,7 +15,9 @@ const CreatePost = () => {
   const [previewPictures, setPreviewPictures] = useState([]);
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.user);
-  const  BASE_URL =   import.meta.env.VITE_BASE_URL
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
+  
+  const { signIn } = UseMetamask(); // Initialize the custom hook
 
   useEffect(() => {
     // Fetch categories for the dropdown from the backend API
@@ -42,35 +45,39 @@ const CreatePost = () => {
   
     return fileList;
   };
-  
+
   const handleSubmit = async () => {
     try {
+      // Trigger sign-in functionality before creating the post
+      await signIn();
+  
+      // Proceed with creating the post
       const formData = new FormData();
       formData.append("title", form.getFieldValue("title"));
       formData.append("content", form.getFieldValue("content"));
       formData.append("author", user.name);
       formData.append("authorId", user.userId);
       formData.append("category", form.getFieldValue("category"));
-
+  
       pictures.forEach((picture) => {
-        formData.append("pictures", picture.originFileObj); // Use originFileObj to get the actual File object
+        formData.append("pictures", picture.originFileObj);
       });
-
-      await axios.post(`${BASE_URL}/api/v1/posts`, formData);
-
+  
+      const response = await axios.post(`${BASE_URL}/api/v1/posts`, formData);
+  
+      console.log('Post created successfully:', response.data);
       navigate("/");
-
-      // window.alert("Post Created Successfully");
     } catch (error) {
       console.error("Error creating post:", error);
     }
   };
+  
 
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Create a New Blog Post</h1>
       <Form form={form} onFinish={handleSubmit} layout="vertical">
-        <Form.Item label="Title" name="title" rules={[{ required: true, message: "Please enter a title" }]}>
+      <Form.Item label="Title" name="title" rules={[{ required: true, message: "Please enter a title" }]}>
           <Input />
         </Form.Item>
 
@@ -112,7 +119,6 @@ const CreatePost = () => {
             <Button icon={<UploadOutlined />}>Click to Upload</Button>
           </Upload>
         </Form.Item>
-
         <Form.Item>
           <Button type="primary" htmlType="submit" block>
             Create Post
@@ -120,6 +126,7 @@ const CreatePost = () => {
         </Form.Item>
       </Form>
 
+      {/* Preview pictures */}
       {previewPictures.map((preview, index) => (
         <img key={index} src={preview} alt={`Preview ${index}`} width="100" />
       ))}

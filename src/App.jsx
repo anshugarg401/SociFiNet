@@ -10,8 +10,9 @@ import CreatePost from "./component/CreatePost";
 import ProtectedRoute from "./component/ProtectedRoute";
 import ForgotPassword from "./component/ForgotPassword";
 import ResetPassword from "./component/ResetPassword";
-import About from "./component/About"
+import About from "./component/About";
 import Post from "./pages/Post";
+import PointSystem from "../src/component/point-system/PointSystem";
 function App() {
   return (
     <>
@@ -23,6 +24,7 @@ function App() {
           <Route path="/reset-password" element={<ResetPassword/>} />
           <Route path="/register" element={<Register />} />
           <Route path="/about" element={<About />} />
+          <Route path="/point-system" element={<PointSystem />} />
           <Route path="/post/:postId" element={<Post />} />
           <Route element={<ProtectedRoute />}>
             <Route path="/createpost" element={<CreatePost />} />

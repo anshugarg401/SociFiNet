@@ -52,6 +52,7 @@ const Navbar = () => {
     // Conditionally render "Register" and "Login" links
     { path: "/register", label: "Register", show: !isUserLoggedIn },
     { path: "/login", label: "Login", show: !isUserLoggedIn },
+    { path: "/point-system", label: "Social-Point", show: isUserLoggedIn },
   ];
 
   const handleMenuItemClick = (path) => {
