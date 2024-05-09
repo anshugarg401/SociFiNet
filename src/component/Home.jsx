@@ -12,6 +12,7 @@ import { setPosts } from '../store/postSlice';
 import { selectUser } from '../store/userSlice';
 import Marquee from 'react-fast-marquee';
 import {  useNavigate } from "react-router-dom";
+
 import ConnectMetamask from '../component/ConnectWallet';
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -27,56 +28,7 @@ const datapost = [
                 praesentium molestiae qui ullam at sequi, est expedita vel explicabo
                 magni quasi.`,
   },
-  {
-    Username: "User Name",
-    Userheader: `User Headline   `,
-    usering:"https://media.istockphoto.com/id/1433039224/photo/blue-user-3d-icon-person-profile-concept-isolated-on-white-background-with-social-member.jpg?s=2048x2048&w=is&k=20&c=4kYlrBEQrLWS--wVUBYiNnMCX6psXAFLuTnARiJotiM=",
-    userpostimg:"https://media.istockphoto.com/id/1501243033/photo/chatbot-or-assistant-robot-chat-with-speech-bubble.jpg?s=2048x2048&w=is&k=20&c=Z-9vOZFkrbQRvemzBn4-AkKJCD5i0MubuRfrTSZjZ38=",
-    Domain: "Domain",
-    Content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
-                praesentium molestiae qui ullam at sequi, est expedita vel explicabo
-                magni quasi.`,
-  },
-  {
-    Username: "User Name",
-    Userheader: `User Headline   `,
-    usering:"https://media.istockphoto.com/id/1433039224/photo/blue-user-3d-icon-person-profile-concept-isolated-on-white-background-with-social-member.jpg?s=2048x2048&w=is&k=20&c=4kYlrBEQrLWS--wVUBYiNnMCX6psXAFLuTnARiJotiM=",
-    userpostimg:"https://media.istockphoto.com/id/1501243033/photo/chatbot-or-assistant-robot-chat-with-speech-bubble.jpg?s=2048x2048&w=is&k=20&c=Z-9vOZFkrbQRvemzBn4-AkKJCD5i0MubuRfrTSZjZ38=",
-    Domain: "Domain",
-    Content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
-                praesentium molestiae qui ullam at sequi, est expedita vel explicabo
-                magni quasi.`,
-  },
-  {
-    Username: "User Name",
-    Userheader: `User Headline   `,
-    usering:"https://media.istockphoto.com/id/1433039224/photo/blue-user-3d-icon-person-profile-concept-isolated-on-white-background-with-social-member.jpg?s=2048x2048&w=is&k=20&c=4kYlrBEQrLWS--wVUBYiNnMCX6psXAFLuTnARiJotiM=",
-    userpostimg:"https://media.istockphoto.com/id/1501243033/photo/chatbot-or-assistant-robot-chat-with-speech-bubble.jpg?s=2048x2048&w=is&k=20&c=Z-9vOZFkrbQRvemzBn4-AkKJCD5i0MubuRfrTSZjZ38=",
-    Domain: "Domain",
-    Content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
-                praesentium molestiae qui ullam at sequi, est expedita vel explicabo
-                magni quasi.`,
-  },
-  {
-    Username: "User Name",
-    Userheader: `User Headline   `,
-    usering:"https://media.istockphoto.com/id/1433039224/photo/blue-user-3d-icon-person-profile-concept-isolated-on-white-background-with-social-member.jpg?s=2048x2048&w=is&k=20&c=4kYlrBEQrLWS--wVUBYiNnMCX6psXAFLuTnARiJotiM=",
-    userpostimg:"https://media.istockphoto.com/id/1501243033/photo/chatbot-or-assistant-robot-chat-with-speech-bubble.jpg?s=2048x2048&w=is&k=20&c=Z-9vOZFkrbQRvemzBn4-AkKJCD5i0MubuRfrTSZjZ38=",
-    Domain: "Domain",
-    Content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
-                praesentium molestiae qui ullam at sequi, est expedita vel explicabo
-                magni quasi.`,
-  },
-  {
-    Username: "User Name",
-    Userheader: `User Headline   `,
-    usering:"https://media.istockphoto.com/id/1433039224/photo/blue-user-3d-icon-person-profile-concept-isolated-on-white-background-with-social-member.jpg?s=2048x2048&w=is&k=20&c=4kYlrBEQrLWS--wVUBYiNnMCX6psXAFLuTnARiJotiM=",
-    userpostimg:"https://media.istockphoto.com/id/1501243033/photo/chatbot-or-assistant-robot-chat-with-speech-bubble.jpg?s=2048x2048&w=is&k=20&c=Z-9vOZFkrbQRvemzBn4-AkKJCD5i0MubuRfrTSZjZ38=",
-    Domain: "Domain",
-    Content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
-                praesentium molestiae qui ullam at sequi, est expedita vel explicabo
-                magni quasi.`,
-  },
+  
 ];
 const { Meta } = Card;
 
@@ -251,11 +203,11 @@ const [Darkmode, setDarkMode] = useState(false);
         
       ) : (
         
-          
-            datapost?.map((item) => (
+        posts?.map((post) => (
+            
               <Card
        
-              key={item.Username}
+              key={post._id}
               hoverable
   
               style={{ width: "100%", margin: "auto" ,
@@ -273,30 +225,37 @@ const [Darkmode, setDarkMode] = useState(false);
             
             >
       
-              <p key={item.Username}>
+              <p key={post.author}>
 
-                  <div className= 
-                   {classNames(
-                    " pt-4 text-inherit",
-                    {"text-black" : !Darkmode },
-                    {"text-white" : Darkmode },
-  
-                  
-                  )}
-                  >
-                    <img
-                      alt="Home"
-                      src={item.userpostimg}
-                      className=" h-56  md:h-60 w-full object-fit"
-                    />
-                  </div>
+              <div className={classNames("pt-4 text-inherit", {"text-black" : !Darkmode }, {"text-white" : Darkmode })}>
+        </div>        
+
+{post?.pictures.length > 0 ? (
+              <div className="md:w-80 md:border-r-2">
+                <img
+                  className="object-cover h-48 w-full rounded-md"
+                  key={post.pictures[0].public_id}
+                  src={post.pictures[0].image}
+                  alt="Post Image"
+                />
+              </div>
+            ) : (
+              <div className="md:w-80 md:border-r-2">
+                <img
+                         className="object-cover h-48 w-full rounded-md"
+                   src="/no-image.jpeg"
+                  alt="Placeholder Image"
+                />
+              </div>
+            )}
+                   
 
                   <div className="mt-2">
                     <div className="mt-4 flex  items-center gap-2  text-xs ">
                       <div className="inline-flex shrink-0 items-center gap-3 ">
                         <a href="" className="flex-none object-cover ">
                           <img
-                            src={item.usering}
+                            src={datapost.usering}
                             className="h-14 w-14  rounded-full"
                             alt=""
                           />
@@ -304,15 +263,15 @@ const [Darkmode, setDarkMode] = useState(false);
 
                         <div className="mt-1.5 sm:mt-0  flex-shrink">
                           <p className=" text-lg font-semibold leading-normal ">
-                          {item.Username}
+                          {post.author}
                           </p>
 
                           <p className="font-normal text-base leading-none -mt-4">
-                          {item.Userheader}
+                          {datapost.Userheader}
                           </p>
                         </div>
                         <div className=" flex flex-row-reverse p-1 pr-5 font-light text-lg  self-start flex-none w-[130px] lg:w-[190px]">
-                          <p>{item.Domain}</p>
+                          <p>{datapost.Domain}</p>
                         </div>
                       </div>
                     </div>
@@ -321,12 +280,29 @@ const [Darkmode, setDarkMode] = useState(false);
                     className="mt-3 flex items-center 
       overflow-hidden  "
                   >
-                    <div className="   text-base font-light px-2 text-left ">
-                    {item.Content}
+                    {/* <div className="   text-base font-light px-2 text-left "> */}
+                    <div className="md:flex-1 md:ml-4">
+              <Meta
+                title={
+                  <h4
+                    style={{ wordWrap: "break-word" }}
+                    className="content font-bold text-2xl h-4"
+                  >
+                    {post.title.substring(0, 20) +
+                      (post.content.length > 20 ? "..." : "")}
+                  </h4>
+                }
+                description={
+                  <p  className={`break-words content-home h-20 ${Darkmode ? 'text-white' : 'text-black'}`}>
+                    {post.content.substring(0, 100) +
+                      (post.content.length > 100 ? "..." : "")}
+                  </p>
+                }
+              />
                     </div>
                   </dl>
                   <div className="mt-4 flex justify-between items-center">
-                <Link to={`#`}>Read more</Link>
+                  <Link to={`/post/${post._id}`}>Read more</Link>
                 <div className='grid grid-flow-col gap-x-2 justify-center'>
                 
                   <Button onClick={() => showCommentModal(post)}>
