@@ -1,12 +1,8 @@
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
-import { PoweroffOutlined } from '@ant-design/icons';
+import close from "/close.svg"
 import { Button } from 'antd';
-import {
-  ChevronDownIcon,
-  PhoneIcon,
-  PlayCircleIcon,
-} from "@heroicons/react/20/solid";
+
 import { useState, useRef, useEffect, useCallback } from "react";
 import MetaMask from "/MetaMask.svg";
 import reload from "/reload.svg";
@@ -42,10 +38,15 @@ export default function WalletDrop({
 
 
   return (
-    <>
-      <Menu as="div" className="relative inline-block text-left">
+
+
+<Menu
+  
+   
+
+       as="div" className="relative inline-block text-left">
         <div >
-          <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md text-gray-900 bg-white hover:bg-gray-100 border focus:ring-gray-100 font-medium  text-sm px-3 py-2 text-center items-center me-2 mb-2">
+          <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md text-gray-900 bg-white hover:bg-gray-100 border focus:ring-gray-100 font-medium  text-sm px-3 py-2 text-center items-center me-2 mb-2 " >
             <img
               className="mr-3"
               height={25}
@@ -66,7 +67,7 @@ export default function WalletDrop({
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items  className="absolute right-0 z-10 mt-2 w-96 h-auto origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+  <Menu.Items  className="absolute right-0 z-10 mt-2 w-96 h-auto origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="py-1">
               
                 
@@ -101,7 +102,7 @@ export default function WalletDrop({
                         <div className="ml-6 mt-2 ">
                           <button
                             onClick={disconnect}
-                            className="text-sm font-medium text-gray-100 middle none center mr-2 rounded-lg bg-blue-400 py-1 hover:bg-blue-500 px-3 font-sans uppercase hover:shadow-sm hover:shadow-blue-500/40 focus:opacity-[0.85] "
+                            className="text-sm font-medium text-gray-100 middle none center mr-2 rounded-lg bg-blue-400 py-1.5 hover:bg-blue-500 px-3 font-sans uppercase hover:shadow-sm hover:shadow-blue-500/40 focus:opacity-[0.85] "
                             data-ripple-light="true"
                           >
                             disconnect
@@ -135,21 +136,22 @@ export default function WalletDrop({
                   <p className="block px-4  text-sm">
                   
                     <div className="flex flex-row-reverse items-center ">
+  
                       
-                    <Button
+                    <Menu.Button
                     bordered 
-                    style={{ borderColor: 'black', borderWidth:"2px" }}
+                    
           type="primary"
-          icon={<PoweroffOutlined />}
-          className="rounded-lg bg-blue-400 py-1 hover:bg-blue-500 px-3 hover:shadow-sm hover:shadow-blue-500/40 focus:opacity-[0.85] "
+         
+          className="rounded-lg bg-blue-400 py-1 hover:bg-blue-500 px-3 hover:shadow-sm hover:shadow-blue-500/40 focus:opacity-[0.85] border-2 "
           data-ripple-light="true "
          
           // onClick={}
-        />
+        > <img src={close} height={20} width={20} alt="" /></Menu.Button>
                       {!isSignedIn ? (
                         <button
                           onClick={signIn}
-                          className="text-sm font-medium text-gray-100 middle none center mr-2 rounded-lg bg-blue-400 py-1 hover:bg-blue-500 px-3 font-sans uppercase hover:shadow-sm hover:shadow-blue-500/40 focus:opacity-[0.85] "
+                          className="text-sm font-semibold text-gray-100 middle none center mr-2 rounded-lg bg-blue-400 py-1.5 hover:bg-blue-500 px-3 font-sans uppercase hover:shadow-sm hover:shadow-blue-500/40 focus:opacity-[0.85] "
                           data-ripple-light="true"
                         >
                           Sign in
@@ -204,6 +206,6 @@ export default function WalletDrop({
           </Menu.Items>
         </Transition>
       </Menu>
-    </>
+
   );
 }
