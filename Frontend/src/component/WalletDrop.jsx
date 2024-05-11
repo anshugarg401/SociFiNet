@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import close from "/close.svg"
-import { Button } from 'antd';
+import Button  from "./Elements/Button";
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import MetaMask from "/MetaMask.svg";
@@ -101,8 +101,10 @@ export default function WalletDrop({
                         </div> */}
                         <div className="ml-6 mt-2 ">
                           <button
+                          
+                          text={"Disconnect"}
                             onClick={disconnect}
-                            className="text-sm font-medium text-gray-100 middle none center mr-2 rounded-lg bg-blue-400 py-1.5 hover:bg-blue-500 px-3 font-sans uppercase hover:shadow-sm hover:shadow-blue-500/40 focus:opacity-[0.85] "
+                            className="text-white text-base uppercase bg-blue-600 text-center border-2 py-1 px-2 rounded-2xl shadow-[0_8px_10px_1px_rgba(51,78,255,0.4)] duration-300 hover:translate-y-0.5 transition-all hover:shadow-[0_8px_10px_1px_rgba(51,78,255,0.6)] "
                             data-ripple-light="true"
                           >
                             disconnect
@@ -139,30 +141,32 @@ export default function WalletDrop({
   
                       
                     <Menu.Button
-                    bordered 
+     
                     
           type="primary"
          
-          className="rounded-lg bg-blue-400 py-1 hover:bg-blue-500 px-3 hover:shadow-sm hover:shadow-blue-500/40 focus:opacity-[0.85] border-2 "
+          className="text-white text-base bg-blue-600 text-center py-1 px-2 rounded-2xl shadow-[0_8px_10px_1px_rgba(51,78,255,0.4)] duration-300 hover:translate-y-0.5 transition-all hover:shadow-[0_8px_10px_1px_rgba(51,78,255,0.6)] "
           data-ripple-light="true "
          
           // onClick={}
-        > <img src={close} height={20} width={20} alt="" /></Menu.Button>
+        > <img src={close} height={20}  width={20} alt="" /></Menu.Button>
                       {!isSignedIn ? (
                         <button
+               
                           onClick={signIn}
-                          className="text-sm font-semibold text-gray-100 middle none center mr-2 rounded-lg bg-blue-400 py-1.5 hover:bg-blue-500 px-3 font-sans uppercase hover:shadow-sm hover:shadow-blue-500/40 focus:opacity-[0.85] "
+                          className=" text-white text-base uppercase bg-blue-600 text-center mr-3 py-1 px-2 rounded-2xl shadow-[0_8px_10px_1px_rgba(51,78,255,0.4)] duration-300 hover:translate-y-0.5 transition-all hover:shadow-[0_8px_10px_1px_rgba(51,78,255,0.6)]"
                           data-ripple-light="true"
                         >
-                          Sign in
+                      Sign in
                         </button>
                       ) : (
                         <button
+                       
                           onClick={signOut}
-                          className="text-sm font-medium text-gray-100 middle none center mr-2 rounded-lg bg-blue-400 py-1 hover:bg-blue-500 px-3 font-sans uppercase hover:shadow-sm hover:shadow-blue-500/40 focus:opacity-[0.85] "
+                          className="text-white text-base uppercase bg-blue-600 text-center mr-3 py-1 px-2 rounded-2xl shadow-[0_8px_10px_1px_rgba(51,78,255,0.4)] duration-300 hover:translate-y-0.5 transition-all hover:shadow-[0_8px_10px_1px_rgba(51,78,255,0.6)]"
                           data-ripple-light="true"
                         >
-                          SignOut
+                         SignOut
                         </button>
                       )}
                     </div>

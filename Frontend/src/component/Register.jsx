@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Button, Input } from "antd";
+import { Input } from "antd";
+import Buttoncustom  from "./Elements/Button";
 import validator from "validator";
 import axios from "axios";
 import { message } from "antd";
@@ -72,13 +73,13 @@ const Register = () => {
       setLoading(false);
     }
   };
-
+// <div className = "flex flex-col items-center">
   return (
   <>
- <div className="flex flex-col md:flex-row gap-4 p-8">
-  <section className="grid place-items-center w-full md:w-1/2 bg-white rounded-md shadow-md">
-
-    <h2>Register</h2>
+ <h2>Sign Up</h2>
+      <div className=" flex flex-shrink mx-auto aspect-auto mt-2 sm:mt-3 md:mt-5 lg:mt-7 h-1/2 max-h-80 bg-white  rounded-3xl overflow-hidden shadow-md w-auto md:flex-row md:w-fit  ">
+  <section className="grid place-items-center w-full md:w-1/2 bg-white  shadow-md  ">
+  <div className = "flex flex-col items-center  transition-all py-5 md:py-6 w-3/5 h-full ">
       {contextHolder}
       <form className="max-w-xl w-full space-y-4">
         <Input onChange={handleUserInput} name="name" placeholder="Name" allowClear />
@@ -94,21 +95,29 @@ const Register = () => {
           </p>
         )}
 
-        <p>
-          Already have an account? <Link to="/login">Login</Link>{" "}
-        </p>
-        <Button block type="primary" onClick={handleSubmit} loading={loading}>
-          Register user
-        </Button>
+<div className= "flex  flex-col -mt-1  text-base md:text-sm  ">
+          Already have an account? 
+          <div>
+          <Link to="/login" className="-mt-2 text-sm text-blue-600 ">
+          Login
+        </Link>
+        </div>
+          </div>
+         
+         
+        <Buttoncustom className="" type="primary" onClick={handleSubmit} loading={loading} text = "Register user">
+          
+        </Buttoncustom>
       </form>
+      </div>
+
+
     </section>
 
 
-
-<div className="flex-1 relative overflow-hidden bg-white rounded-md shadow-md">
-  <video className="w-full h-full object-cover" src="/gmcads-reg-vdo.mp4" autoPlay loop muted playsInline></video>
+    <div className="flex-1 relative overflow-hidden bg-white rounded-md shadow-md">
+  <video className="w-full h-full object-cover" src="/gmcads-login-vdo.mp4" autoPlay loop muted playsInline></video>
 </div>
-
 
 
 

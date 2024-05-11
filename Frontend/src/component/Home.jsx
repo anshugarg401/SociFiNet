@@ -164,7 +164,7 @@ const [Darkmode, setDarkMode] = useState(false);
 
 </div>
     
-    <div className="container mx-auto overflow-x-hidden ">
+    <div className="container max-w-max  overflow-x-hidden ">
 
       
 
@@ -178,12 +178,12 @@ const [Darkmode, setDarkMode] = useState(false);
 
 
       <h1 style={{ wordWrap: "break-word" }}>
-      Discover stories, expertise from writers on Decentralized Finances,Transition into Blockchain,Web3 Developments and Other Categories around the world! </h1>
+      Welcome to the SUBSPACE Forum! Engage in thoughtful discussions and ensure your contributions are relevant and organized within our community. </h1>
 
       <Marquee>
-        <p className="text-transparent bg-gradient-to-tr from-red-900 to-blue-900 bg-clip-text">
+        <div className={` mt-1 md:mt-4 xl:mt-6 text-transparent bg-gradient-to-tr  ${Darkmode ? 'from-red-400 to-blue-400 bg-clip-text' : 'from-red-900 to-blue-900 bg-clip-text'}`}>
         Subspace is the first layer-one blockchain that is resolving the blockchain trilemma.
-        </p>
+        </div>
       </Marquee>
 
 
@@ -203,7 +203,7 @@ const [Darkmode, setDarkMode] = useState(false);
         </div>
         
       ) : (
-        <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mt-2 md:mt-8 xl:mt-16'>
+        <div className='grid grid-col gap-1 md:gap-2  xl:gap-4 md:grid-cols-2 lg:grid-cols-3 mt-2 md:mt-8 lg:mt-16 '>
 
         
         
@@ -222,7 +222,7 @@ const [Darkmode, setDarkMode] = useState(false);
                 "linear-gradient(to right, rgba(255, 255, 255, 0.2) 10%, rgba(255, 255, 255, 0.15) 60%, rgba(255, 255, 255, 0.1) 90%)",}}
                 
                  
-                className={Darkmode ? 'mb-4 flex h-42  flex-col md:flex-row text-white' : 'mb-4  flex   h-42 flex-col md:flex-row'}
+                className={Darkmode ? '  mb-4 flex h-42  flex-col md:flex-row text-white' : 'mb-4  flex   h-42 flex-col md:flex-row'}
 
                 
               
@@ -317,7 +317,7 @@ const [Darkmode, setDarkMode] = useState(false);
                   </dl>
                   <div className="mt-4 flex justify-between items-center">
                   <Link to={`/post/${post._id}`}>Read more</Link>
-                <div className='grid grid-flow-col gap-x-2 justify-center'>
+                <div className='grid grid-flow-col gap-x-1 justify-center'>
                 
                   <Button onClick={() => showCommentModal(post)}>
                     <div className='flex '>
