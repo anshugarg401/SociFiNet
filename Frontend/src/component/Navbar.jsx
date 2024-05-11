@@ -5,7 +5,7 @@ import { LogoutOutlined, MenuOutlined } from "@ant-design/icons";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutUser } from "../store/userSlice";
 import { useNavigate } from 'react-router-dom';
-
+import ConnectMetamask from '../component/ConnectWallet';
 
 
 const Navbar = () => {
@@ -62,6 +62,9 @@ const Navbar = () => {
 
   return (
     <>
+          <div className="absolute top-0 right-0 mr-4 mt-4"> 
+        <ConnectMetamask />
+      </div>
 
       <nav className="shadow-md p-2 md:p-4 bg-white">
         <div className="max-w-6xl mx-auto flex items-center justify-between">

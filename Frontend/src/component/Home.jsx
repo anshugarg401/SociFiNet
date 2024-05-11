@@ -5,6 +5,7 @@ import axios from 'axios';
 import NightAndDay from '../component/nightday/NightDayToggle'
 import commenticon from '/comment.png'
 import likeicon from '/like.png'
+import nopost from '/nopost.svg'
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Modal, Button, Input, Card, message, Spin } from 'antd';
@@ -13,7 +14,7 @@ import { selectUser } from '../store/userSlice';
 import Marquee from 'react-fast-marquee';
 import {  useNavigate } from "react-router-dom";
 
-import ConnectMetamask from '../component/ConnectWallet';
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -151,20 +152,20 @@ const [Darkmode, setDarkMode] = useState(false);
 
   const [paginationList, setPaginationList] = useState([]);
 
-  return (
+  return <>
   
 
 
-
-    
-    <div className="container mx-auto">
-   <div className="flex justify-start"  onClick = {handleDarkMode}>
+<div className='container overflow-x-hidden'>
+<div className="flex justify-start"  onClick = {handleDarkMode}>
   <NightAndDay/>
 </div>
 
-      <div className="absolute top-0 right-0 mr-4 mt-4"> 
-        <ConnectMetamask />
-      </div>
+
+</div>
+    
+    <div className="container mx-auto overflow-x-hidden ">
+
       
 
 {loading && (
@@ -181,43 +182,47 @@ const [Darkmode, setDarkMode] = useState(false);
 
       <Marquee>
         <p className="text-transparent bg-gradient-to-tr from-red-900 to-blue-900 bg-clip-text">
-        SocifiNet is a decentralized social networking platform built on Web3 technology,aiming to revolutionize social media
+        Subspace is the first layer-one blockchain that is resolving the blockchain trilemma.
         </p>
       </Marquee>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
     
           {datapost.length === 0 ? (
         <div>
           <img
-            src={emptysaved}
+            src={nopost}
             alt=""
             className="object-contain h-60 xl:h-96 w-full  sm:px-10 md:px-20"
           />
           <div style={{ WebkitTextFillColor: "#4F51C0" }}>
             <p className="font-semibold text-xl xl:text-3xl text-center sm:mt-6 md:mt-8 xl:mt-12 ">
-              No Saved Posts Yet
+              No Posts Yet
             </p>
           </div>
         </div>
         
       ) : (
+        <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mt-2 md:mt-8 xl:mt-16'>
+
         
-        posts?.map((post) => (
+        
+      {  posts?.map((post) => (
+        
             
               <Card
        
               key={post._id}
               hoverable
   
-              style={{ width: "100%", margin: "auto" ,
+              style={{ width: "100%", margin: "auto", height:"min-content" ,
             
               
               background:
                 "linear-gradient(to right, rgba(255, 255, 255, 0.2) 10%, rgba(255, 255, 255, 0.15) 60%, rgba(255, 255, 255, 0.1) 90%)",}}
                 
                  
-                className={Darkmode ? 'mb-4 flex h-42 flex-col md:flex-row text-white' : 'mb-4 flex h-42 flex-col md:flex-row'}
+                className={Darkmode ? 'mb-4 flex h-42  flex-col md:flex-row text-white' : 'mb-4  flex   h-42 flex-col md:flex-row'}
 
                 
               
@@ -225,13 +230,14 @@ const [Darkmode, setDarkMode] = useState(false);
             
             >
       
-              <p key={post.author}>
+              <div className='container' key={post.author}>
 
               <div className={classNames("pt-4 text-inherit", {"text-black" : !Darkmode }, {"text-white" : Darkmode })}>
-        </div>        
+        </div>       
+      
 
 {post?.pictures.length > 0 ? (
-              <div className="md:w-80 md:border-r-2">
+              <div className="container mx-auto md:w-80 md:border-r-2 ">
                 <img
                   className="object-cover h-48 w-full rounded-md"
                   key={post.pictures[0].public_id}
@@ -239,6 +245,7 @@ const [Darkmode, setDarkMode] = useState(false);
                   alt="Post Image"
                 />
               </div>
+
             ) : (
               <div className="md:w-80 md:border-r-2">
                 <img
@@ -247,7 +254,11 @@ const [Darkmode, setDarkMode] = useState(false);
                   alt="Placeholder Image"
                 />
               </div>
-            )}
+            )
+            
+            
+            }
+            
                    
 
                   <div className="mt-2">
@@ -261,7 +272,7 @@ const [Darkmode, setDarkMode] = useState(false);
                           />
                         </a>
 
-                        <div className="mt-1.5 sm:mt-0  flex-shrink">
+                        <div className="mt-1.5 sm:mt-0 grid grid-cols-2">
                           <p className=" text-lg font-semibold leading-normal ">
                           {post.author}
                           </p>
@@ -270,9 +281,9 @@ const [Darkmode, setDarkMode] = useState(false);
                           {datapost.Userheader}
                           </p>
                         </div>
-                        <div className=" flex flex-row-reverse p-1 pr-5 font-light text-lg  self-start flex-none w-[130px] lg:w-[190px]">
+                        {/* <div className=" flex flex-row-reverse p-1 pr-5 font-light text-lg  self-start flex-none w-[130px] lg:w-[190px]">
                           <p>{datapost.Domain}</p>
-                        </div>
+                        </div> */}
                       </div>
                     </div>
                   </div>
@@ -281,24 +292,27 @@ const [Darkmode, setDarkMode] = useState(false);
       overflow-hidden  "
                   >
                     {/* <div className="   text-base font-light px-2 text-left "> */}
-                    <div className="md:flex-1 md:ml-4">
+                    <div className="md:flex-1 ">
               <Meta
+              
                 title={
                   <h4
                     style={{ wordWrap: "break-word" }}
-                    className="content font-bold text-2xl h-4"
+                    className={`content font-bold text-2xl h-auto m-0 my-1 ${Darkmode ? 'text-white' : 'text-black'}`}
                   >
                     {post.title.substring(0, 20) +
                       (post.content.length > 20 ? "..." : "")}
                   </h4>
                 }
                 description={
-                  <p  className={`break-words content-home h-20 ${Darkmode ? 'text-white' : 'text-black'}`}>
+                  <p  className={`break-words content-home h-20 text-base font-light px-1 text-left ${Darkmode ? 'text-white' : 'text-black'}`}>
                     {post.content.substring(0, 100) +
                       (post.content.length > 100 ? "..." : "")}
                   </p>
                 }
               />
+              
+
                     </div>
                   </dl>
                   <div className="mt-4 flex justify-between items-center">
@@ -324,12 +338,15 @@ const [Darkmode, setDarkMode] = useState(false);
                   
                 </div>
               </div>
-              </p>
+              </div>
               </Card>
-           ) ))}
+           ))}
+           </div>
+          
+            )}
                
 
-      </div>
+
 
       <Modal
         title="Add Comment"
@@ -358,7 +375,7 @@ const [Darkmode, setDarkMode] = useState(false);
 
       </div>
     </div>
-    )
+    </>
 
 };
 
