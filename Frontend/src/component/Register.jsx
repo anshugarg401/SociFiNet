@@ -79,7 +79,7 @@ const Register = () => {
  <h2>Sign Up</h2>
       <div className=" flex flex-shrink mx-auto aspect-auto mt-2 sm:mt-3 md:mt-5 lg:mt-7 h-1/2 max-h-80 bg-white  rounded-3xl overflow-hidden shadow-md w-auto md:flex-row md:w-fit  ">
   <section className="grid place-items-center w-full md:w-1/2 bg-white  shadow-md  ">
-  <div className = "flex flex-col items-center  transition-all py-5 md:py-6 w-3/5 h-full ">
+  <div className = "flex flex-col items-center justify-center  transition-all py-5 md:py-6 w-3/5 h-full ">
       {contextHolder}
       <form className="max-w-xl w-full space-y-4">
         <Input onChange={handleUserInput} name="name" placeholder="Name" allowClear />
