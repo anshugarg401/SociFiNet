@@ -325,22 +325,26 @@ const [Darkmode, setDarkMode] = useState(false);
                   <Link to={`/post/${post._id}`}>Read more</Link>
                 <div className='grid grid-flow-col gap-x-1 justify-center'>
                 
-                  <Button onClick={() => showCommentModal(post)}>
+                 
                     <div className='flex text-xs md:text-sm lg:text-base sm:pl-2 '>
-                    <img height={20} src={commenticon} alt="" className='pr-2 ' />
-                    <span >  Comment</span>
+                    
+                    <Button onClick={() => showCommentModal(post)}>
+                    <span ><img height={20} src={commenticon} alt="" className='pr-2 ' />  Comment</span>
+                    </Button>
                     </div>
                   
                   
                   
-                  </Button>
-                  <Button onClick={() => handleLike(post._id)}> 
+                  
+                  
                   <div className='flex text-xs md:text-sm lg:text-base sm:-mr-3'>
-                    <img height={20} src={likeicon} alt="" className='pr-2 ' />
-                    <span >  Like</span>
+                   
+                    <Button onClick={() => handleLike(post._id)}> 
+                    <span > <img height={20} src={likeicon} alt="" className='pr-2 ' />  Like <span>{likeCount}</span></span>
+                    </Button>
                     <span className='ml-2'>{likeCount}</span>
                     </div>
-                  </Button>
+                  
                   
                 </div>
               </div>
