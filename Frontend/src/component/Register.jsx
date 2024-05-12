@@ -82,9 +82,10 @@ const Register = () => {
   <div className = "flex flex-col items-center justify-center  transition-all py-5 md:py-6 w-3/5 h-full ">
       {contextHolder}
       <form className="max-w-xl w-full space-y-4">
-        <Input onChange={handleUserInput} name="name" placeholder="Name" allowClear />
-        <Input onChange={handleUserInput} name="email" placeholder="Email" allowClear />
+        <Input className="border-2 border-gray-400" onChange={handleUserInput} name="name" placeholder="Name" allowClear />
+        <Input className="border-2 border-gray-400" onChange={handleUserInput} name="email" placeholder="Email" allowClear />
         <Input.Password
+        className="border-2 border-gray-400"
           onChange={handleUserInput}
           name="password"
           placeholder="Password" allowClear

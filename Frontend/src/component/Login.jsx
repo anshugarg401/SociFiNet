@@ -90,10 +90,10 @@ const Login = () => {
     <input onChange={handleUserInput}    name="password"  placeholder="Password" type="password" className={inputclass} />
 </div> */}
 
-        <Input onChange={handleUserInput} name="email" placeholder="Email" />
+        <Input className="border-2 border-gray-400" onChange={handleUserInput} name="email" placeholder="Email" />
 
         <Input
-        className=""
+        className="border-2 border-gray-400"
           onChange={handleUserInput}
           name="password"
           placeholder="Password"
@@ -105,7 +105,7 @@ const Login = () => {
           <Link to="/register" className="  text-base text-blue-600 ">
             Register
         </Link>
-        <span> / </span>
+        <span className="text-black"> / </span>
         <Link to="/forgot-password" className=" self-start text-base text-blue-600 ">
           Forgot Password ?
         </Link>
