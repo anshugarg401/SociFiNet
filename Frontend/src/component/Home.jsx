@@ -203,7 +203,7 @@ const [Darkmode, setDarkMode] = useState(false);
         </div>
         
       ) : (
-        <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mt-2 md:mt-8 xl:mt-16'>
+        <div className='grid grid-cols-1 gap-1 mt-2 sm:grid-cols-2 sm:gap-2 md:mt-8 custom-1300:grid-cols-3 custom-1300:gap-4  custom-1300:mt-16 '>
 
         
         
@@ -222,7 +222,7 @@ const [Darkmode, setDarkMode] = useState(false);
                 "linear-gradient(to right, rgba(255, 255, 255, 0.2) 10%, rgba(255, 255, 255, 0.15) 60%, rgba(255, 255, 255, 0.1) 90%)",}}
                 
                  
-                className={Darkmode ? 'mb-4 flex h-42  flex-col md:flex-row text-white' : 'mb-4  flex   h-42 flex-col md:flex-row'}
+                className={Darkmode ? '  mb-4 flex h-42  flex-col md:flex-row text-white' : 'mb-4  flex   h-42 flex-col md:flex-row'}
 
                 
               
@@ -265,11 +265,17 @@ const [Darkmode, setDarkMode] = useState(false);
                     <div className="mt-4 flex  items-center gap-2  text-xs ">
                       <div className="inline-flex shrink-0 items-center gap-3 ">
                         <a href="" className="flex-none object-cover ">
-                          <img
+                    {/* {  post?.pictures.length > 0 ? (    <img
                             src={datapost.usering}
                             className="h-14 w-14  rounded-full"
                             alt=""
+                          />):( */}
+                          <img
+                            src="https://media.istockphoto.com/id/1433039224/photo/blue-user-3d-icon-person-profile-concept-isolated-on-white-background-with-social-member.jpg?s=2048x2048&w=is&k=20&c=4kYlrBEQrLWS--wVUBYiNnMCX6psXAFLuTnARiJotiM="
+                            className="h-14 w-14  rounded-full"
+                            alt=""
                           />
+                          {/* )} */}
                         </a>
 
                         <div className="mt-1.5 sm:mt-0 grid grid-cols-2">
@@ -315,26 +321,30 @@ const [Darkmode, setDarkMode] = useState(false);
 
                     </div>
                   </dl>
-                  <div className="mt-4 flex justify-between items-center">
+                  <div className="mt-4 flex justify-between items-center text-xs md:text-sm lg:text-base ">
                   <Link to={`/post/${post._id}`}>Read more</Link>
-                <div className='grid grid-flow-col gap-x-2 justify-center'>
+                <div className='grid grid-flow-col gap-x-1 justify-center'>
                 
-                  <Button onClick={() => showCommentModal(post)}>
-                    <div className='flex '>
-                    <img height={20} src={commenticon} alt="" className='pr-2 ' />
-                    <span >  Comment</span>
+                 
+                    <div className='flex text-xs md:text-sm lg:text-base sm:pl-2 '>
+                    
+                    <Button onClick={() => showCommentModal(post)}>
+                    <span ><img height={20} src={commenticon} alt="" className='pr-2 ' />  Comment</span>
+                    </Button>
                     </div>
                   
                   
                   
-                  </Button>
-                  <Button onClick={() => handleLike(post._id)}> 
-                  <div className='flex '>
-                    <img height={20} src={likeicon} alt="" className='pr-2 ' />
-                    <span >  Like</span>
+                  
+                  
+                  <div className='flex text-xs md:text-sm lg:text-base sm:-mr-3'>
+                   
+                    <Button onClick={() => handleLike(post._id)}> 
+                    <span > <img height={20} src={likeicon} alt="" className='pr-2 ' />  Like <span>{likeCount}</span></span>
+                    </Button>
                     <span className='ml-2'>{likeCount}</span>
                     </div>
-                  </Button>
+                  
                   
                 </div>
               </div>
@@ -348,7 +358,7 @@ const [Darkmode, setDarkMode] = useState(false);
 
 
 
-      <Modal
+               <Modal
         title="Add Comment"
         open={commentModalVisible}
         onOk={handleComment}
