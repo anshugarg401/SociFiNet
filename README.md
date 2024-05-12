@@ -57,14 +57,13 @@ For more about Rollapp X, https://docs.dymension.xyz/build/testnet/evm/informati
 
 ## Screenshots/Demo
 
+![socifinet-new1](https://github.com/Jaytechent/SociFiNet/assets/91403188/51bcdfa6-53ba-4e33-89d9-d1f7a725f3b1)
+![socifinet-new2](https://github.com/Jaytechent/SociFiNet/assets/91403188/f7a9030f-3e5c-46b8-85a6-ac20c8c73c1f)
 
 ![socifinet-8](https://github.com/Jaytechent/SociFiNet/assets/91403188/fb3de9b1-e18c-4423-a81c-70ef5ecb4b79)
-![socifinet-7](https://github.com/Jaytechent/SociFiNet/assets/91403188/9229b9ce-2f1f-4b24-b42d-7e93ed50e327)
-![socifinet-6](https://github.com/Jaytechent/SociFiNet/assets/91403188/d23ded37-c9d8-4ab2-983c-4f87c352eaba)
 ![socifinet-5](https://github.com/Jaytechent/SociFiNet/assets/91403188/e77ae5d0-86a7-4c99-b3f5-3a81065ca68f)
 ![socifinet-4](https://github.com/Jaytechent/SociFiNet/assets/91403188/fca245f8-4fb7-4a61-8df6-d72e624cff62)
 ![socifinet-3](https://github.com/Jaytechent/SociFiNet/assets/91403188/8213d9e4-1f20-42c7-a4eb-23fd7510b21b)
-![socifinet-2](https://github.com/Jaytechent/SociFiNet/assets/91403188/06e27d75-009d-45a7-9234-cbcff3dc5a86)
 ![socifinet-1](https://github.com/Jaytechent/SociFiNet/assets/91403188/75b2eff0-aa30-4111-99ca-4ddcca0918a3)
 ![socifinet-9](https://github.com/Jaytechent/SociFiNet/assets/91403188/a938699c-37a1-46ef-ad98-b20c26b687b5)
 
