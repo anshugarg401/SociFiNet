@@ -182,7 +182,7 @@ const [Darkmode, setDarkMode] = useState(false);
 
       <Marquee>
         <p className="text-transparent bg-gradient-to-tr from-red-900 to-blue-900 bg-clip-text">
-        Subspace is the first layer-one blockchain that is resolving the blockchain trilemma.
+    SocifiNet is a decentralized social networking platform built on Web3 technology, aiming to revolutionize social media.
         </p>
       </Marquee>
 
