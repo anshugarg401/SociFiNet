@@ -157,7 +157,7 @@ export default function WalletDrop({
                           className=" text-white text-base uppercase bg-blue-600 text-center mr-3 py-1 px-2 rounded-2xl shadow-[0_8px_10px_1px_rgba(51,78,255,0.4)] duration-300 hover:translate-y-0.5 transition-all hover:shadow-[0_8px_10px_1px_rgba(51,78,255,0.6)]"
                           data-ripple-light="true"
                         >
-                      Sign in
+                      Check-in
                         </button>
                       ) : (
                         <button
@@ -166,7 +166,7 @@ export default function WalletDrop({
                           className="text-white text-base uppercase bg-blue-600 text-center mr-3 py-1 px-2 rounded-2xl shadow-[0_8px_10px_1px_rgba(51,78,255,0.4)] duration-300 hover:translate-y-0.5 transition-all hover:shadow-[0_8px_10px_1px_rgba(51,78,255,0.6)]"
                           data-ripple-light="true"
                         >
-                         SignOut
+                         Check-Out
                         </button>
                       )}
                     </div>
