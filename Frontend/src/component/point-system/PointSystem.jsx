@@ -7,7 +7,6 @@ const ContractInteraction = () => {
     const [points, setPoints] = useState(0);
     const [web3, setWeb3] = useState(null);
     const [account, setAccount] = useState('');
-    const [isSignedIn, setIsSignedIn] = useState(false);
 
     useEffect(() => {
         const loadWeb3 = async () => {
@@ -47,21 +46,29 @@ const ContractInteraction = () => {
         }
     }, [web3]);
 
+    const getAllEvents = async (eventName, filter) => {
+        const events = [];
+        const latestBlock = Number(await web3.eth.getBlockNumber()); // Convert BigInt to Number
+        const step = 10000;
+        for (let i = 0; i <= latestBlock; i += step) {
+            const fromBlock = i;
+            const toBlock = Math.min(i + step - 1, latestBlock);
+            const partialEvents = await contract.getPastEvents(eventName, {
+                filter,
+                fromBlock,
+                toBlock,
+            });
+            events.push(...partialEvents);
+        }
+        return events;
+    };
+
     useEffect(() => {
         const getPoints = async () => {
             try {
-                if (contract) {
-                    const signInEvents = await contract.getPastEvents('SignedIn', {
-                        filter: { user: account },
-                        fromBlock: 0,
-                        toBlock: 'latest'
-                    });
-
-                    const signOutEvents = await contract.getPastEvents('SignedOut', {
-                        filter: { user: account },
-                        fromBlock: 0,
-                        toBlock: 'latest'
-                    });
+                if (contract && account) {
+                    const signInEvents = await getAllEvents('SignedIn', { user: account });
+                    const signOutEvents = await getAllEvents('SignedOut', { user: account });
 
                     const earnedPoints = Math.min(signInEvents.length, signOutEvents.length);
                     setPoints(earnedPoints);
@@ -89,10 +96,9 @@ const ContractInteraction = () => {
             <h1>YOUR TOTAL SociFi</h1>
             <p>SociFi Loyalist OG : <b>Nil</b></p>
             <p>SociFi Loyalist Reward: <b>Nil</b></p>
-            <p>SociFi Loyalist Mined: <b>{points}</b> </p>
+            <p>SociFi Loyalist Mined: <b>{points}</b></p>
 
-
-            {/* <button onClick={handleInteraction}>Interact with Contract</button> */}
+            
         </div>
     );
 };
