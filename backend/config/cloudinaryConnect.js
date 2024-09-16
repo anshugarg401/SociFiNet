@@ -2,9 +2,9 @@ const cloudinary = require("cloudinary").v2;
 
 const connectToCloudinary = () => {
   return cloudinary.config({
-    cloud_name: "dkpw7sieh",
-    api_key: "564558243798843",
-    api_secret: "RwnxFaBHA3fed5CEBmBU_3cHR2w",
+    cloud_name: "dw3rtflxw",
+    api_key: "918483474269396",
+    api_secret: "9xhc4ryB3b_mWWLiauqEzvdDn",
   });
 };
 

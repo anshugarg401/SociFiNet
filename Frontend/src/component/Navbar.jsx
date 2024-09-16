@@ -89,7 +89,7 @@ const Navbar = () => {
             />
           </div>
 
-          <div className="hidden md:flex md:items-center md:space-x-4">
+          <div className=" md:flex md:items-center md:space-x-4">
     {items
       .filter((item) => item.show !== false) // Filter out items with show set to false
       .map((item, index) => (
